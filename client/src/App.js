@@ -7,6 +7,7 @@ const App = () => {
   const getData = async () => {
 
     const userEmail='toto@gmail.com'
+    const userEmail2='roro'
 
     try {
       const response = await fetch(`http://localhost:8000/properties/${userEmail}`)
