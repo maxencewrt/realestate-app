@@ -1,13 +1,85 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app {
+  background-color: white;
+  box-shadow: rgba(0,0,0, 0.05) 0 6px 24px, rgba(0,0,0, 0.08) 0 0 0 1px ;
+  border-radius: 10px;
+  padding: 10px;
+  width: 800px;
+  margin-top: 50px;
+}
+
+.button-container .info-container{
+  display: flex;
+  align-items: center;
+}
+
+.button-container button{
+  font-size: 10px;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+/* List header */
+.list-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: rgba(0,0,0, 0.05) 1px solid;
+
+}
+
+
+/* List item */
+.list-item {
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: rgba(0,0,0, 0.08) 0 0 0 1px ;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tick path{
+  fill:none;
+  stroke:#000;
+  stroke-miterlimit:10;
+  stroke-width:32px;
+}
+
+.tick {
+  padding: 10px;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0, 0.05);
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 500px;
+  background-color: aqua;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: rgba(0,0,0, 0.05) 0 6px 24px 0, rgba(0,0,0, 0.08) 0 0 0 1px ;
+}
+
+.ap {
+
 }

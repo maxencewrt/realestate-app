@@ -1,29 +1,48 @@
 "https://www.youtube.com/watch?v=LYEkguL9PcY"
 import ListHeader from  "./components/ListHeader"
-import {useEffect} from 'react'
+import ListItem from  "./components/ListItem"
+import Auth from "./components/Auth"
+import {useEffect, useState} from 'react'
+import { useCookies } from 'react-cookie'
+
 
 const App = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(null)
+  const authToken= cookies.AuthToken
+  const userEmail= cookies.Email
+  const [ tasks, setTasks ] = useState(null)
 
   const getData = async () => {
-
-    const userEmail='toto@gmail.com'
-    const userEmail2='roro'
-
     try {
-      const response = await fetch(`http://localhost:8000/properties/${userEmail}`)
+      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/properties/${userEmail}`)
       const json = await response.json()
-      console.log(json)
+      setTasks(json)
     } catch (err){
-      console.error(err)
+      console.log(err)
     }
   }
 
-  useEffect (() => getData, [])
+  useEffect (() => {
+    if (authToken) {
+      getData()
+    }}
+  ,[])
 
+
+  console.log(tasks)
+
+  //Sorted by date 
+  const sortedTasks = tasks?.sort((a,b) => new Date(a.date) - new Date(b.date))
 
   return (
     <div className="app">
-      <ListHeader listName={'Property List'}/>
+      {!authToken && <Auth/>}
+      { authToken &&
+      <>
+      <ListHeader listName={'Property List'} getData={getData}/>
+      <p>Welcome back {userEmail} </p>
+      {sortedTasks?.map((task) => <ListItem key={task.id} task={task} getData={getData}/>)}
+      </>}
     </div>
   )
 }
