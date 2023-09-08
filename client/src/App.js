@@ -42,14 +42,19 @@ const App = () => {
     <div className="app">
       {!authToken && <Auth /> }
 
-      {authToken &&
-        <>
-          <SidebarWithLogo />
-          <ComplexNavbar />
-          <ListHeader listName={'Property List1'} getData={getData} />
-          {sortedTasks?.map((task) => <ListItem key={task.id} task={task} getData={getData} />)}
-          <FooterWithSocialLinks/>
-        </>}
+      {authToken && (
+    <div className="flex"> 
+        <SidebarWithLogo />
+      <div className="flex-1"> {/* Utilisez flex-1 pour occuper l'espace restant */}
+        <ComplexNavbar />
+        <ListHeader listName={'Property List1'} getData={getData} />
+        {sortedTasks?.map((task) => (
+          <ListItem key={task.id} task={task} getData={getData} />
+        ))}
+        <FooterWithSocialLinks />
+      </div>
+    </div>
+  )}
     </div>
   )
 }
