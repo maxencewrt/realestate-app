@@ -5,7 +5,7 @@
   "scripts": {
     "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install)",
     "server": "node .server/server.js",
-    "client": "cd cleint && npm start"
+    "client": "cd client && npm start"
   },
   "dependencies": {
     "if-env": "^1.0.4"
