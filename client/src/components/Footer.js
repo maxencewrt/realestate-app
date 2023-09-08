@@ -1,6 +1,9 @@
 import { Typography } from "@material-tailwind/react";
+import packageJson from '../../package.json'; // Assurez-vous de spécifier le chemin correct
+
 
 const currentYear = new Date().getFullYear();
+const version = packageJson.version;
 
 export function FooterWithSocialLinks() {
     return (
@@ -11,8 +14,8 @@ export function FooterWithSocialLinks() {
                         variant="small"
                         className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
                     >
-                        &copy; {currentYear} <a href="https://material-tailwind.com/">RealEstateApp</a>. All
-                        Rights Reserved.
+                        &copy; {currentYear} <a href="https://material-tailwind.com/">RealEstateApp (version - {version})</a>. All
+                        Rights Reserved. 
                     </Typography>
                     <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
                         <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
