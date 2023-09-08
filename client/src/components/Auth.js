@@ -11,6 +11,7 @@ import {
   Button,
   Alert,
 } from "@material-tailwind/react";
+import { FooterWithSocialLinks } from './Footer';
 
 function IconWarning() {
   return (
@@ -143,7 +144,10 @@ const Auth = () => {
           </Typography>}
         </CardFooter>
       </Card>
-      </div>
+      <footer className="absolute bottom-0 w-full">
+      <FooterWithSocialLinks/>
+      </footer>
+      </div> 
     )
   }
   
