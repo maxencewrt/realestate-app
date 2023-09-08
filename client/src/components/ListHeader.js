@@ -1,24 +1,16 @@
 import { useState } from "react"
 import Modal from "./Modal"
-import { useCookies } from 'react-cookie'
+import { ComplexNavbar } from "./Navbar"
 
 const ListHeader = ({ listName, getData }) => {
-  const [cookies, setCookie, removeCookie] = useCookies(null)
   const [showModal, setShowModal]  = useState(false)
 
-  const signOut = () => {
-    console.log('signOut')
-    removeCookie('Email')
-    removeCookie('AuthToken')
-    window.location.reload()
-  }
-
     return (
-      <div className="list-header">
+      <div>
+        <ComplexNavbar />
         <h1>{listName}</h1>
         <div className="button-container">
           <button className="create" onClick={() => setShowModal(true)}>ADD NEW</button>
-          <button className="signout" onClick={signOut}>SIGNOUT</button>
         </div>
         {showModal && <Modal mode={'create'} setShowModal={setShowModal} getData={getData}/>}
       </div>
