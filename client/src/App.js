@@ -2,11 +2,20 @@
 import ListHeader from "./components/ListHeader"
 import ListItem from "./components/ListItem"
 import Auth from "./components/Auth"
+
+import Attachements from "./pages/Attachements"
+import Contracts from "./pages/Contracts"
+import Dashboard from "./pages/Dashboard"
+import Profile from "./pages/Profile"
+import Properties from "./pages/Properties"
+import Settings from "./pages/Settings"
+
 import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { ComplexNavbar } from "./components/Navbar"
 import { SidebarWithLogo } from "./components/Sidebar"
 import { FooterWithSocialLinks } from "./components/Footer"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null)
@@ -40,21 +49,33 @@ const App = () => {
   return (
 
     <div className="app">
-      {!authToken && <Auth /> }
+      {!authToken && <Auth />}
 
-      {authToken && (
-    <div className="flex"> 
-        <SidebarWithLogo />
-      <div className="flex-1"> {/* Utilisez flex-1 pour occuper l'espace restant */}
-        <ComplexNavbar />
-        <ListHeader listName={'Property List1'} getData={getData} />
-        {sortedTasks?.map((task) => (
-          <ListItem key={task.id} task={task} getData={getData} />
-        ))}
-        <FooterWithSocialLinks />
-      </div>
-    </div>
-  )}
+      {authToken && (<>
+        <div className="flex">
+          <SidebarWithLogo />
+          <div className="flex-1">
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/Attachements" element={<Attachements />} />
+                <Route path="/Contracts" element={<Contracts />} />
+                <Route path="/Dashboard" element={<Dashboard />} />
+                <Route path="/Profile" element={<Profile />} />
+                <Route path="/Properties" element={<Properties />} />
+                <Route path="/Settings" element={<Settings />} />
+              </Routes>
+            </BrowserRouter>
+            <ComplexNavbar />
+            <ListHeader listName={'Property List1'} getData={getData} />
+            {sortedTasks?.map((task) => (
+              <ListItem key={task.id} task={task} getData={getData} />
+            ))}
+            <FooterWithSocialLinks />
+          </div>
+        </div>
+      </>
+      )}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import {
   Card,
@@ -45,6 +45,29 @@ const Auth = () => {
     setError(null)
     setIsLogin(status)
    }
+
+   useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        // Empêchez le comportement par défaut du formulaire
+        e.preventDefault();
+        
+        // Cliquez sur le bouton Submit
+        const submitButton = document.getElementById('submitButton');
+        if (submitButton) {
+          submitButton.click();
+        }
+      }
+    };
+
+    // Ajoutez un gestionnaire d'événements pour la touche "Entrée"
+    document.addEventListener('keypress', handleKeyPress);
+
+    // Nettoyez le gestionnaire d'événements lorsque le composant est démonté
+    return () => {
+      document.removeEventListener('keypress', handleKeyPress);
+    };
+  }, []);
 
   const handleSubmit = async (e, endpoint) => { 
     e.preventDefault()
@@ -113,7 +136,7 @@ const Auth = () => {
           {error}
           </Alert>
         }
-          <Button variant="gradient" fullWidth type='submit' onClick={(e) => handleSubmit (e, isLogIn ? 'login' : 'signup')}>
+          <Button variant="gradient" id="submitButton" fullWidth type='submit' onClick={(e) => handleSubmit (e, isLogIn ? 'login' : 'signup')}>
             Submit
           </Button>
           { isLogIn && <Typography variant="small" className="mt-6 flex justify-center">
