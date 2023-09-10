@@ -9,11 +9,11 @@ import Dashboard from "./pages/Dashboard"
 import Profile from "./pages/Profile"
 import Properties from "./pages/Properties"
 import Settings from "./pages/Settings"
+import SidebarWithLogo from "./components/Sidebar"
 
 import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { ComplexNavbar } from "./components/Navbar"
-import { SidebarWithLogo } from "./components/Sidebar"
 import { FooterWithSocialLinks } from "./components/Footer"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
@@ -54,19 +54,19 @@ const App = () => {
       {authToken && (<>
         <div className="flex">
           <SidebarWithLogo />
+          <ComplexNavbar />
           <div className="flex-1">
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Dashboard />} />
-                <Route path="/Attachements" element={<Attachements />} />
-                <Route path="/Contracts" element={<Contracts />} />
-                <Route path="/Dashboard" element={<Dashboard />} />
-                <Route path="/Profile" element={<Profile />} />
-                <Route path="/Properties" element={<Properties />} />
-                <Route path="/Settings" element={<Settings />} />
+                <Route path="/attachements" element={<Attachements />} />
+                <Route path="/contracts" element={<Contracts />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/properties" element={<Properties />} />
+                <Route path="/settings" element={<Settings />} />
               </Routes>
             </BrowserRouter>
-            <ComplexNavbar />
             <ListHeader listName={'Property List1'} getData={getData} />
             {sortedTasks?.map((task) => (
               <ListItem key={task.id} task={task} getData={getData} />

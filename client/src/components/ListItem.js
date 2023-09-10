@@ -1,7 +1,6 @@
 import { useState } from "react"
 import TickIcon from "./TickIcon"
 import Modal from "./Modal"
-import ProgressBar from "./ProgressBar"
 import { Button } from "@material-tailwind/react";
 
 const ListItem = ({task, getData}) => {
@@ -25,7 +24,6 @@ const ListItem = ({task, getData}) => {
         <div className="info-container">
           <TickIcon />
           <p className="task-title">{task.title}</p>
-          <ProgressBar />
         </div>
         <div className="button-container">
           <Button onClick={() => setShowModal(true)}>EDIT</Button>
