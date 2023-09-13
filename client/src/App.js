@@ -3,7 +3,7 @@ import ListHeader from "./components/ListHeader"
 import ListItem from "./components/ListItem"
 import Auth from "./components/Auth"
 
-import Attachements from "./pages/Attachements"
+import Attachments from "./pages/Attachments"
 import Contracts from "./pages/Contracts"
 import Dashboard from "./pages/Dashboard"
 import Profile from "./pages/Profile"
@@ -11,14 +11,14 @@ import Properties from "./pages/Properties"
 import Settings from "./pages/Settings"
 import SidebarWithLogo from "./components/Sidebar"
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { ComplexNavbar } from "./components/Navbar"
 import { FooterWithSocialLinks } from "./components/Footer"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 const App = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(null)
+  const [cookies] = useCookies(null)
   const authToken = cookies.AuthToken
   const userEmail = cookies.Email
   const [tasks, setTasks] = useState(null)
@@ -32,14 +32,6 @@ const App = () => {
       console.log(err)
     }
   }
-
-  useEffect(() => {
-    if (authToken) {
-      getData()
-    }
-  }
-    , [])
-
 
   console.log(tasks)
 
@@ -55,11 +47,11 @@ const App = () => {
         <div className="flex">
           <SidebarWithLogo />
           <ComplexNavbar />
-          <div className="flex-1">
+          <div className="flex-1  px-8">
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Dashboard />} />
-                <Route path="/attachements" element={<Attachements />} />
+                <Route path="/attachments" element={<Attachments />} />
                 <Route path="/contracts" element={<Contracts />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/profile" element={<Profile />} />

@@ -42,7 +42,7 @@ function ProfileMenu() {
             icon: UserCircleIcon,
         },
         {
-            label: "Edit Profile",
+            label: "Settings",
             icon: Cog6ToothIcon,
         },
         {

@@ -38,23 +38,26 @@ const SidebarWithLogo = () => {
         {
             path: "/",
             name: "Dashboard",
-            icon: <PresentationChartBarIcon className="h-5 w-5" />,
-            onclick: signOut
+            icon: <PresentationChartBarIcon className="h-5 w-5"/>,
+            onclick: () => {window.location.href = '/dashboard';}
         },
         {
             path: "/",
             name: "Properties",
-            icon: <ListBulletIcon className="h-5 w-5" />
+            icon: <ListBulletIcon className="h-5 w-5" />,
+            onclick: () => {window.location.href = '/properties';}
         },
         {
             path: "/",
             name: "Contracts",
-            icon: <ClipboardDocumentIcon className="h-5 w-5" />
+            icon: <ClipboardDocumentIcon className="h-5 w-5" />,
+            onclick: () => {window.location.href = '/contracts';}
         },
         {
             path: "/",
             name: "Attachments",
-            icon: <PaperClipIcon className="h-5 w-5" />
+            icon: <PaperClipIcon className="h-5 w-5" />,
+            onclick: () => {window.location.href = '/attachments';}
         },
         {
             hr: true
@@ -62,12 +65,14 @@ const SidebarWithLogo = () => {
         {
             path: "/",
             name: "Profile",
-            icon: <UserCircleIcon className="h-5 w-5" />
+            icon: <UserCircleIcon className="h-5 w-5" />,
+            onclick: () => {window.location.href = '/profile';}
         },
         {
             path: "/",
             name: "Settings",
-            icon: <Cog6ToothIcon className="h-5 w-5" />
+            icon: <Cog6ToothIcon className="h-5 w-5" />,
+            onclick: () => {window.location.href = '/settings';}
         },
         {
             path: "/",
@@ -108,10 +113,10 @@ const SidebarWithLogo = () => {
             <Alert open={openAlert} className="mt-auto" onClose={() => setOpenAlert(false)}>
                 <CubeTransparentIcon className="mb-4 h-12 w-12" />
                 <Typography variant="h6" className="mb-1">
-                    Upgrade to PRO | BUSINESS
+                    Upgrade to PRO BUSINESS
                 </Typography>
                 <Typography variant="small" className="font-normal opacity-80">
-                    Upgrade to RealEstatePro or RealEstateBusiness to unlock Properties limit and get access to advanced features.
+                    Upgrade to Pro or Business to unlock Properties limit and get access to advanced features.
                 </Typography>
                 <div className="mt-4 flex gap-3">
                     <Typography
